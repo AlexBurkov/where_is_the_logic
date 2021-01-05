@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.1)
-project(server)
+project(where_is_the_logic)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED on)
@@ -15,13 +15,13 @@ add_subdirectory(contrib)
 add_subdirectory(library)
 add_subdirectory(sources)
 add_subdirectory(util)
+add_subdirectory(app)
 
-add_subdirectory(english)
-
-add_executable(server
+add_executable(where_is_the_logic
   main.cpp
 )
 
-target_link_libraries(server PUBLIC
+target_link_libraries(where_is_the_logic PUBLIC
   application
+  generic
 )

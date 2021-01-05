@@ -3,7 +3,6 @@
 #include "library/mongo/wrappers.h"
 
 #include "sources/collections/base.h"
-#include "english/collections/common_set.h"
 
 #include "util/generic/holder.h"
 
@@ -27,5 +26,4 @@ private:
 
 public:
     TCollectionBase CollectionBase;
-    NEnglish::TSetOfCollections English;
 };
