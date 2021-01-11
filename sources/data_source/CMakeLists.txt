@@ -6,4 +6,5 @@ target_link_libraries(data_source PUBLIC
     mongo
     collections
     generic
+    app_collections
 )

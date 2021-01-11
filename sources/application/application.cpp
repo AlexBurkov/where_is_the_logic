@@ -5,12 +5,7 @@
 #include "sources/handlers/hi.h"
 #include "sources/handlers/numbers.h"
 
-/*#include "english/handlers/common.h"
-#include "english/handlers/admin/sessions.h"
-#include "english/handlers/admin/translations.h"
-#include "english/handlers/admin/word_categories.h"
-#include "english/handlers/admin/users.h"
-#include "english/handlers/users.h"*/
+#include "app/handlers/user_handler.h"
 
 #include "util/generic/ctype.h"
 
@@ -26,6 +21,10 @@ TApplication::TApplication(NJson::TJsonValue& config)
     });
     Server->Get(R"(/api/admin/numbers/(\d+))", [&](const httplib::Request& req, httplib::Response& res) {
         NumbersHandler(*DataSource, req, res);
+    });
+
+    Server->Post("/api/signup", [&](const httplib::Request& req, httplib::Response& res) {
+        UserSignupHandler(*DataSource, req, res);
     });
 }
 

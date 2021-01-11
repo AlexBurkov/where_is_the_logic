@@ -6,4 +6,5 @@ target_link_libraries(application PUBLIC
     httplib
     data_source
     json
+    app_handlers
 )

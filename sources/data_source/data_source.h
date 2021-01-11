@@ -2,6 +2,7 @@
 
 #include "library/mongo/wrappers.h"
 
+#include "app/collections/user_collection.h"
 #include "sources/collections/base.h"
 
 #include "util/generic/holder.h"
@@ -26,4 +27,5 @@ private:
 
 public:
     TCollectionBase CollectionBase;
+    TCollectionUser CollectionUser;
 };
