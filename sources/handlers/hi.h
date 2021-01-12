@@ -11,4 +11,3 @@ void HiHandler(TDataSource& dataSource, const httplib::Request& req, httplib::Re
     INFO_LOG << response.dump() << Endl;
     res.set_content(response.dump(), "text/plain");
 }
-
