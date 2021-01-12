@@ -1,5 +1,6 @@
 #include "app/records/user_record.h"
 #include "app/validators/validator_signup.h"
+#include "app/handlers/common.h"
 
 #include "contrib/httplib/httplib.h"
 #include "sources/data_source/data_source.h"
@@ -12,14 +13,14 @@ void UserSignupHandler(TDataSource& dataSource, const httplib::Request& req, htt
 	if (validatorUser.Validate(dataSource)) {
 		TRecordUser recordUser(jsonRecord);
 		if (!dataSource.CollectionUser.Create(recordUser)) {
-	        response["Status"] = "InsertError";
+	        response[RESPONSE_STATUS] = RESPONSE_STATUS_INSERT_ERROR;
 	    } else {
-	        response["Status"] = "Ok";
-	        response["Body"] = jsonRecord.dump();
+	        response[RESPONSE_STATUS] = RESPONSE_STATUS_OK;
+	        response[RESPONSE_BODY] = jsonRecord.dump();
 	    }
 	} else {
-		response["Status"] = "ValidationError";
-		response["ValidationErrors"] = validatorUser.GetValidationErrors();
+		response[RESPONSE_STATUS] = RESPONSE_STATUS_VALIDATION_ERROR;
+		response[RESPONSE_VALIDATION_ERRORS] = validatorUser.GetValidationErrors();
 	}
 	res.set_content(response.dump(), "application/json");
 }
